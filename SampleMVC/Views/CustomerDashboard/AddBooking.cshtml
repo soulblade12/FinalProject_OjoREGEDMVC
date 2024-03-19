@@ -1,0 +1,68 @@
+﻿@model OjoREGED.BLL.DTOs.InsertBookingSP
+<div class="row">
+    <div class="col-lg-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Employee Information</h5>
+                @foreach (var employee in ViewBag.AllEmployee)
+                {
+                    <p><strong>Username:</strong> @employee.Username</p>
+                    <p><strong>Name:</strong> @($"{employee.First_Name} {employee.Last_Name}")</p>
+                    <p><strong>Telephone:</strong> @employee.Telephone</p>
+                    <p><strong>Location:</strong> @($"{employee.EmployeeLocations.City}, {employee.EmployeeLocations.Province}")</p>
+                    <p><strong>Schedule ID:</strong> @employee.EmployeeSchedules.Employee_Schedule_ID</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <!-- Basic Card Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Add Booking :</h6>
+            </div>
+            <div class="card-body">
+                <form asp-action="AddBooking" method="post">
+                    <div class="form-group row">
+                        <div class="col-lg-12 mb-3 mt-3">
+                            <label for="Employee_Schedule_ID" class="form-label">Employee Schedule :</label>
+                            <select class="form-control" name="Employee_Schedule_ID" asp-for="Employee_Schedule_ID">
+                                <option value="">Select Employee Schedule</option>
+                                @foreach (var employee in ViewBag.AllEmployee)
+                                {
+                                    <option value="@employee.EmployeeSchedules.Employee_Schedule_ID">
+                                        @($"{employee.First_Name} {employee.Last_Name} - {employee.EmployeeSchedules.Employee_Schedule_ID}")
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-lg-3 mb-3">
+                            <label for="Weight" class="form-label">Weight :</label>
+                            <input type="text" class="form-control" name="Weight" asp-for="Weight" />
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label for="Order_Instruction" class="form-label">Order Instruction :</label>
+                            <input type="text" class="form-control" name="Order_Instruction" asp-for="Order_Instruction" />
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-12 mb-3">
+                                <label for="Size" class="form-label">Size:</label>
+                                <select class="form-control" name="Size" asp-for="Size">
+                                    <option value="">Select Size</option>
+                                    <option value="XS">XS</option>
+                                    <option value="S">S</option>
+                                    <option value="M">M</option>
+                                    <option value="L">L</option>
+                                    <option value="XL">XL</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" name="name" class="btn btn-primary" value="AddBooking" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card shadow mb-4"></div>

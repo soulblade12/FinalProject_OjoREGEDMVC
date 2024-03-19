@@ -1,0 +1,20 @@
+﻿@model OjoREGED.BLL.DTOs.EmployeeCreateSchedule
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Form mask</h4>
+        <p class="card-description">Gives a preview of input format</p>
+        <form asp-action="AddSchedule" method="post">
+            <div class="col-lg-12 mb-3 mt-3">
+                <label asp-for="Max_Order" class="form-label">Max Order:</label>
+                <input type="number" class="form-control" name="Max_Order" asp-for="Max_Order" />
+            </div>
+            <div class="col-lg-3 mb-3">
+                <label asp-for="Date" class="form-label">Date:</label>
+                <!-- Use input type="datetime-local" for DateTime input -->
+                <input type="datetime-local" class="form-control" name="Date" asp-for="Date" />
+            </div>
+            <input type="submit" name="name" class="btn btn-primary" value="AddSchedule" />
+        </form>
+    </div>
+</div>

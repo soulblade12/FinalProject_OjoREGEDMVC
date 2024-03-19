@@ -1,0 +1,61 @@
+﻿@model IEnumerable<OjoREGED.BLL.DTOs.PickupDTO>
+
+<h1>Pickup Information</h1>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Pickup List</h4>
+                <div class="table-responsive">
+                    <table id="pickup-listing" class="table">
+                        <thead>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>Pickup Time</th>
+                                <th>Pickup ID</th>
+                                <th>Delivery Status</th>
+                                <th>Order ID</th>
+                                <th>Bills ID</th>
+                                <th>Delivery Charges</th>
+                                <th>Tip Amount</th>
+                                <th>Bill Date</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var pickup in ViewBag.PickupList)
+                            {
+                                <tr>
+                                    <td>@pickup.Employee_ID</td>
+                                    <td>@pickup.Pickup_Time</td>
+                                    <td>@pickup.Pickup_ID</td>
+                                    <td>@pickup.Delivery_Status</td>
+                                    <td>@pickup.Order_ID</td>
+                                    <td>@pickup.BillsIds.bills_ID</td>
+                                    <td>@pickup.BillsIds.Delivery_Charges</td>
+                                    <td>@pickup.BillsIds.Tip_Amount</td>
+                                    <td>@pickup.BillsIds.BillDate</td>
+                                   
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script>
+        $(document).ready(function () {
+            $('#pickup-listing').DataTable();
+        });
+    </script>
+
+
+    <script src="~/skydash/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/skydash/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+}

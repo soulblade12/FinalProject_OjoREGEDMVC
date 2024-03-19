@@ -1,0 +1,65 @@
+﻿@{
+    @foreach(var order in Model)
+    {
+    var orderStatus = order.OrderDetails.Order_Status;
+        
+    }
+
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Orders Placed</h4>
+                <div class="table-responsive">
+                    <table id="order-placed-listing" class="table">
+                        <thead>
+                            <tr>
+                                <th>Customer ID</th>
+                                <th>Time Placed</th>
+                                <th>Weight</th>
+                                <th>Size</th>
+                                <th>Order Instruction</th>
+                                <th>Order Status</th>
+                                <th>Order Image</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                            @foreach (var order in Model)
+                            {
+                                <tr>
+                                    <td>@order.Customer_ID</td>
+                                    <td>@order.Time_Placed</td>
+                                    <td>@order.OrderDetails.Weight kg</td>
+                                    <td>@order.OrderDetails.Size</td>
+                                    <td>@order.OrderDetails.Order_Instruction</td>
+                                    @if (@order.OrderDetails.Order_Status != 1)
+                                    {
+                                        <td><label class="badge badge-success">Pickup Up</label></td>
+                                    }
+                                    else
+                                    {
+                                        
+                                        <td><label class="badge badge-danger">No Pickup</label></td>
+                                    }
+                                    <td>@order.OrderDetails.Order_Img</td>
+                                </tr>
+                            }
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#order-placed-listing').DataTable();
+        });
+    </script>
+}

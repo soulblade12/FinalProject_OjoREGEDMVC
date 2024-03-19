@@ -1,0 +1,135 @@
+﻿<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="row">
+            <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                <h3 class="font-weight-bold">
+                    @ViewBag.Message
+                </h3>
+                <h6 class="font-weight-normal mb-0">dont forget to take your trash !! </h6>
+            </div>
+            @{
+                if (@ViewBag.City == null)
+                {
+                    <div class="col-2 mb-3 mb-xl-0" id="profileCompletionDiv" runat="server">
+                        <h6>Complete your profile</h6>
+                        <a asp-action="AddLocation" class="btn btn-danger btn-user btn-block">Add Your Address</a>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 grid-margin stretch-card">
+        <div class="card tale-bg">
+            <div class="card-people mt-auto">
+                <img src="~/skydash/images/dashboard/people.svg" alt="people">
+                <div class="weather-info">
+                    <div class="d-flex">
+                        <div>
+                            <h2 class="mb-0 font-weight-normal"><i class="icon-sun mr-2"></i>31<sup>C</sup></h2>
+                        </div>
+                        <div class="ml-2">
+                            <h4 class="location font-weight-normal">
+                                <asp:Literal Text="Sunny" runat="server" ID="weather" />
+                            </h4>
+                            <h6 class="font-weight-normal">
+                                @ViewBag.City
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 grid-margin transparent">
+        <div class="row">
+            <div class="col-md-6 mb-4  stretch-card transparent">
+                <a asp-action="AddSchedule" class="card-link">
+                <div class="card card-light-blue">
+                    <div class="card-body">
+                        <p class="mb-4">Add Your Schedule</p>
+                        <p class="fs-30 mb-2"> No Schedule To Be Found </p>
+                            <p>@ViewBag.Message</p>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="col-md-6 stretch-card transparent">
+                <div class="card card-light-danger">
+                    <div class="card-body">
+                        <p class="mb-4">Number of Clients</p>
+                        <p class="fs-30 mb-2">47033</p>
+                        <p>0.22% (30 days)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+@* <a asp-action="AddSubscription" class="btn btn-primary btn-user btn-block">Add Your Subscription</a> *@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Employee Order Placed</h4>
+                <a asp-action="AddPickup" class="btn btn-danger btn-user btn-block">Add Pickup</a>
+                <div class="table-responsive">
+                    <table id="order-placed-listing" class="table">
+                        <thead>
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>Schedule ID</th>
+                                <th>Date</th>
+                                <th>Max Order</th>
+                                <th>Order Scheduled</th>
+                                <th>Status</th>
+                                <th>Status Description</th>
+                                <th>Size</th>
+                                <th>Weight</th>
+                                <th>Order Instruction</th>
+                                <th>Order Img</th>
+                                <th>Customer ID</th>
+                                <th>Order Detail ID</th>
+                                <th>Order ID</th>
+                                <th>Time Placed</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var orderPlaced in ViewBag.OrderPlaced)
+                            {
+                                <tr>
+                                    <td>@orderPlaced.Employee_ID</td>
+                                    <td>@orderPlaced.Employee_Schedule_ID</td>
+                                    <td>@orderPlaced.Date</td>
+                                    <td>@orderPlaced.Max_Order</td>
+                                    <td>@orderPlaced.Order_Scheduled</td>
+                                    <td>@orderPlaced.Status</td>
+                                    <td>
+                                        @if (orderPlaced.Status_Description == "No Pickup")
+                                        {
+                                            <label class="badge badge-danger">@orderPlaced.Status_Description</label>
+                                        }
+                                        else
+                                        {
+                                            <label class="badge badge-success">@orderPlaced.Status_Description</label>
+                                        }
+                                    </td>
+                                    <td>@orderPlaced.Size</td>
+                                    <td>@orderPlaced.Weight</td>
+                                    <td>@orderPlaced.Order_Instruction</td>
+                                    <td>@orderPlaced.Order_Img</td>
+                                    <td>@orderPlaced.Customer_ID</td>
+                                    <td>@orderPlaced.OrderDetail_ID</td>
+                                    <td>@orderPlaced.Order_ID</td>
+                                    <td>@orderPlaced.Time_Placed</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

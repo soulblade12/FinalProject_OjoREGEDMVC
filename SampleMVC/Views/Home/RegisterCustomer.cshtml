@@ -1,0 +1,92 @@
+﻿@model OjoREGED.BLL.DTOs.CustomerCreateDTO
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Skydash Admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/skydash/vendors/feather/feather.css">
+    <link rel="stylesheet" href="~/skydash/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="~/skydash/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/skydash/css/vertical-layout-light/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/skydash/images/favicon.png" />
+</head>
+<body>
+    
+        <div class="row justify-content-center">
+            <div class="col-xl-10 col-lg-12 col-md-9">
+                <div class="card border-0 shadow-lg my-5 rounded-4">
+                    <div class="content-wrapper d-flex align-items-center auth px-0">
+                        <div class="row w-100 mx-0 auth-form-light rounded-4">
+                            <div class="col-lg-6 d-none d-lg-block bg-register-image">
+                                <img src="~/img/Asset1.svg" alt="Alternate Text" />
+                            </div>
+                            <div class="col-lg-6 ">
+                                <div class="auth-form-light text-left py-2 px-4 px-sm-5">
+                                    <div class="brand-logo">
+                                        <img src="~/img/OjoregedLogo.png" alt="logo">
+                                    </div>
+                                    <asp:Literal ID="ltMessage" runat="server" />
+                                    <h4>Hello! let's get started</h4>
+                                    <h6 class="font-weight-light">Sign in to continue.</h6>
+                                <form asp-action="RegisterCustomer">
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 mb-3 mb-sm-0">
+                                            <label asp-for="Username" class="control-label"></label>
+                                            <input asp-for="Username" class="form-control" />
+                                            <span asp-validation-for="Username" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+                                            <label asp-for="First_Name" class="control-label"></label>
+                                            <input asp-for="First_Name" class="form-control" />
+                                            <span asp-validation-for="First_Name" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+                                            <label asp-for="Middle_Name" class="control-label"></label>
+                                            <input asp-for="Middle_Name" class="form-control" />
+                                            <span asp-validation-for="Middle_Name" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-sm-6 mt-3">
+                                            <input asp-for="Last_Name" class="form-control" placeholder="Last Name"/>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                        <input asp-for=Telephone type="text" class="form-control" placeholder="Telephone"/>
+                                        </div>
+                                        <div class="form-group">
+                                        <input asp-for=Email_Address type="text" class="form-control" placeholder="Email Address"/>
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                        <input asp-for=Password type="text" class="form-control" placeholder="Password"/>
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                        <input asp-for=RePassword type="text" class="form-control" placeholder="RePassword"/>
+                                        </div>
+                                       
+                                    <input type="submit" value="Submit" class="btn btn-primary" />  
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- content-wrapper ends -->
+                </div>
+                <!-- page-body-wrapper ends -->
+            </div>
+        </div>
+    
+</body>
+</html>

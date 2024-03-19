@@ -1,0 +1,38 @@
+﻿@model OjoREGED.BLL.DTOs.employeeDTO
+
+<div class="row">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Admin View</h1>
+    </div>
+
+    <div class="col-lg-12">
+        <!-- Basic Card Example -->
+        <div class="card shadow mb-4">
+            @* <asp:Literal ID="ltMessage" runat="server" /> *@
+            @Html.Raw(ViewData["message"])
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">List Employee :</h6>
+            </div>
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Employee_ID" /> <!-- Hidden field for Employee_ID -->
+                <div class="mb-3">
+                    <label asp-for="First_Name" class="form-label">First Name :</label>
+                    <input asp-for="First_Name" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Middle_Name" class="form-label">Middle Name :</label>
+                    <input asp-for="Middle_Name" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Last_Name" class="form-label">Last Name :</label>
+                    <input asp-for="Last_Name" class="form-control" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Telephone" class="form-label">Telephone :</label>
+                    <input asp-for="Telephone" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
